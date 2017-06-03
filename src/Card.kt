@@ -5,4 +5,4 @@ val spades = "Spades"
 var redSuits = arrayOf(diamonds, hearts)
 var blackSuits = arrayOf(clubs, spades)
 
-class Card(val value: Int, val suit: String, var faceUp: Boolean = false)
+data class Card(val value: Int, val suit: String, var faceUp: Boolean = false)
