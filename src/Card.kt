@@ -1,5 +1,1 @@
-class Card {
-    val value: Int = 0
-    val suit: String = ""
-    val faceUp: Boolean = false
-}
+class Card(val value: Int, val suit: String, val faceUp: Boolean = false)
