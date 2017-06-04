@@ -14,7 +14,7 @@ object GameModel {
         foundationPiles.forEach { it.reset() }
         deck.reset()
         
-        tableauPiles.forEachIndexed { i, tableauPile ->
+        tableauPiles.forEachIndexed { i, _ ->
             val cardsInPile: MutableList<Card> = Array(i + 1, { deck.drawCard() }).toMutableList()
             tableauPiles[i] = TableauPile(cardsInPile)
         }
@@ -85,5 +85,24 @@ object GameModel {
             }
         }
         return false
+    }
+
+    fun debugPrint() {
+        var firstLine = if (wastePile.size > 0) "${wastePile.last()}" else "___"
+        firstLine = firstLine.padEnd(18)
+        foundationPiles.forEach {
+            firstLine += if (it.cards.size > 0) "${it.cards.last()}" else "___"
+            firstLine += "   "
+        }
+        println(firstLine)
+        println()
+        for (i in 0..12) {
+            var row = ""
+            tableauPiles.forEach {
+                row += if (it.cards.size > i) "${it.cards[i]}" else "   "
+                row += "   "
+            }
+            println(row)
+        }
     }
 }
